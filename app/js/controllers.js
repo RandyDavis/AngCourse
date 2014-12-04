@@ -43,34 +43,28 @@ angular.module('myApp.controllers', [])
       $scope.parties.$save(party.$id)
     };
   }])
-  .controller('AuthController', ['$scope', '$firebaseSimpleLogin', '$location', 'FIREBASE_URL', 'authService', function($scope, $firebaseSimpleLogin, $location, FIREBASE_URL, authService) {
-    var authRef = new Firebase(FIREBASE_URL);
-
-    var auth = $firebaseSimpleLogin(authRef);
-
+  .controller('AuthController', ['$scope', 'authService', function($scope, authService) {
+    
+    // Object bound to inputs on the register and login pages.
     $scope.user = {
       email: '',
       password: ''
     };
 
+    // Method to register a new user using the authService
     $scope.register = function() {
-      auth.$createUser($scope.user.email, $scope.user.password).then(function(data) {
-        console.log(data);
-        $scope.login();
-      });
+      authService.register($scope.user);
     };
 
+    // Method to login a user using the authService
     $scope.login = function() {
       authService.login($scope.user);
     };
 
+    // Method to log out a user using the authService
     $scope.logout = function() {
-      auth.$logout();
-      // Redirect users to /
-      $location.path('/');
+      authService.logout();
     };
-
-
   }]);
 
 
