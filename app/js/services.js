@@ -10,7 +10,7 @@ angular.module('myApp.services', [])
   // .factory('FIREBASE_URL', function() {
   //   return 'https://waitandeat-randy.firebaseio.com/';
   // })
-  .factory('authService', function ($firebaseSimpleLogin, $location, FIREBASE_URL) {
+  .factory('authService', function ($firebaseSimpleLogin, $location, $rootScope, FIREBASE_URL) {
     var authRef = new Firebase(FIREBASE_URL);
     var auth = $firebaseSimpleLogin(authRef);
 
@@ -34,5 +34,36 @@ angular.module('myApp.services', [])
         $location.path('/');
       }
     };
+
+    $rootScope.$on("$firebaseSimpleLogin:login", function(e, user) {
+      // Save currentUser on our rootScope
+      $rootScope.currentUser = user;
+    });
+
+    $rootScope.$on("$firebaseSimpleLogin:logout", function() {
+      // Save currentUser on our rootScope
+      $rootScope.currentUser = null;
+    });
+
+
     return authServiceObject;
   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
