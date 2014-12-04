@@ -18,13 +18,14 @@ angular.module('myApp.controllers', [])
       name: '',
       phone: '',
       size: '',
-      done: false
+      done: false,
+      notified: 'No'
     };
 
     // Function to save a new party to the waitlist
     $scope.saveParty = function() {
       $scope.parties.$add($scope.newParty);
-      $scope.newParty = { name: '', phone: '', size: '', done: false };
+      $scope.newParty = { name: '', phone: '', size: '', done: false, notified: 'No' };
     };
 
     // Function to send text message to party
@@ -37,6 +38,9 @@ angular.module('myApp.controllers', [])
         name: party.name
       };
       textMessages.$add(newTextMessage);
+      // Code here for notified
+      party.notified = 'Yes';
+      $scope.parties.$save(party.$id)
     };
   }]);
 
