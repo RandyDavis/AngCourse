@@ -41,7 +41,7 @@
     </td>
     <td>
       <div>
-        <button type="submit" class="btn btn-success">Send SMS</button>
+        <button ng-click="sendTextMessage(party.phone)" type="submit" class="btn btn-success">Send SMS</button>
         <button ng-click="parties.$remove(party.$id)" type="submit" class="btn btn-danger">Remove Party</button>
       </div>
     </td>
