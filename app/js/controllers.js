@@ -66,6 +66,10 @@ angular.module('myApp.controllers', [])
       });
     };
 
+    $scope.logout = function() {
+      auth.$logout();
+    };
+
 
   }]);
 
