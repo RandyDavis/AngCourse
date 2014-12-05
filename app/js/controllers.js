@@ -38,7 +38,7 @@ angular.module('myApp.controllers', [])
 
     // Function to send text message to party
     $scope.sendTextMessage = function(party) {
-      textMessageService.sendTextMessage(party);
+      textMessageService.sendTextMessage(party, $scope.currentUser.id);
     };
   }])
   .controller('AuthController', ['$scope', 'authService', function($scope, authService) {

@@ -38,7 +38,7 @@ angular.module('myApp.services', [])
 
 
     var textMessageServiceObject = {
-      sendTextMessage: function(party) {
+      sendTextMessage: function(party, userId) {
         var newTextMessage = {
           phoneNumber: party.phone,
           size: party.size,
@@ -46,8 +46,7 @@ angular.module('myApp.services', [])
         };
         textMessages.$add(newTextMessage);
         // Code here for notified
-        party.notified = 'Yes';
-        partyService.parties.$save(party.$id);
+        partyService.getPartiesByUserId(userId).$child(party.$id).$update({notified: 'Yes'});
       }
     };
 
