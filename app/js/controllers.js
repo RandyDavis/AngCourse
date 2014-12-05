@@ -21,7 +21,7 @@ angular.module('myApp.controllers', [])
 
     // Function to save a new party to the waitlist
     $scope.saveParty = function() {
-      partyService.saveParty($scope.newParty);
+      partyService.saveParty($scope.newParty, $scope.currentUser.id);
       // Reset form after adding party
       $scope.newParty = {
         name: '',
