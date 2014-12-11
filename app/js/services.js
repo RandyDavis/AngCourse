@@ -1,8 +1,6 @@
 'use strict';
 
 /* Services */
-
-
 // Demonstrate how to register services
 // In this case it is a simple value service.
 angular.module('myApp.services', [])
@@ -77,7 +75,7 @@ angular.module('myApp.services', [])
       login: function(user, optionalCallback) {
         auth.$login('password', user).then(function(data) {
           console.log(data);
-          if(optionalCallback) {
+          if (optionalCallback) {
             optionalCallback();
           }
           // Redirect users to /waitlist
@@ -104,25 +102,6 @@ angular.module('myApp.services', [])
       $rootScope.currentUser = null;
     });
 
-
     return authServiceObject;
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

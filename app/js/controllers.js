@@ -12,7 +12,7 @@ angular.module('myApp.controllers', [])
       if (user) {
         $scope.parties = partyService.getPartiesByUserId(user.id);
       }
-    })
+    });
 
     // Object to store data from the waitlist form
     $scope.newParty = {
@@ -64,25 +64,3 @@ angular.module('myApp.controllers', [])
       authService.logout();
     };
   }]);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
